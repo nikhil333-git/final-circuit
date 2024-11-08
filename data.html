@@ -138,6 +138,14 @@
                     });
                     ultrasonicData += "</ul>";
                     document.getElementById("ultrasonicData").innerHTML = ultrasonicData;
+                   
+                    // Display Soil Moisture data (field4)
+                let soilMoistureData = "<h4>Latest Soil Moisture Readings:</h4><ul>";
+                feeds.forEach(feed => {
+                    soilMoistureData += `<li>Soil Moisture: ${feed.field4} at ${feed.created_at}</li>`;
+                });
+                soilMoistureData += "</ul>";
+                document.getElementById("soilMoistureData").innerHTML = soilMoistureData;
     
                     // Display DHT11 data (field2 for temperature, field3 for humidity)
                     let dht11Data = "<h4>Latest DHT11 Readings:</h4><ul>";
@@ -149,6 +157,7 @@
     
                 } catch (error) {
                     document.getElementById("ultrasonicData").innerHTML = "<p>Error fetching data from ThingSpeak.</p>";
+                    document.getElementById("dht11Data").innerHTML = "<p>Error fetching data from ThingSpeak.</p>";
                     document.getElementById("dht11Data").innerHTML = "<p>Error fetching data from ThingSpeak.</p>";
                 }
             }
